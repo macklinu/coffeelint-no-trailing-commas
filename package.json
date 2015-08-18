@@ -1,0 +1,33 @@
+{
+  "name": "coffeelint-no-trailing-commas",
+  "version": "1.0.0",
+  "description": "Validate no trailing commas",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jasonku/coffeelint-no-trailing-commas"
+  },
+  "keywords": [
+    "coffeelint",
+    "coffeelintrule",
+    "coffee-lint"
+  ],
+  "author": {
+    "name": "Jason Ku",
+    "email": "jku@jasontku.com",
+    "url": "http://www.jasontku.com"
+  },
+  "bugs": {
+    "url": "https://github.com/jasonku/coffeelint-no-trailing-commas/issues"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "homepage": "https://github.com/jasonku/coffeelint-no-trailing-commas",
+  "peerDependencies": {
+    "coffeelint": "~1"
+  }
+}

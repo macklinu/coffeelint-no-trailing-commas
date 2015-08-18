@@ -54,9 +54,8 @@ module.exports = class NoTrailingCommas
 
         hasComma = regexes.trailingComma.test(newLine)
         [first..., last] = lineTokens
-        hasNewLine = last and last.newLine?
         # Don't throw errors when the contents of multiline strings,
         # regexes and the like end in ","
-        if hasComma and not hasNewLine and lineApi.lineHasToken() and
+        if hasComma and lineApi.lineHasToken() and
                 not (last[0] in ['STRING', 'IDENTIFIER', 'STRING_END'])
             return true

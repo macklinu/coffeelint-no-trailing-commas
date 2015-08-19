@@ -14,7 +14,7 @@ vows.describe('no_trailing_commas').addBatch(
 
         'should not warn when not enabled': ->
             assert.isEmpty(coffeelint.lint("""
-            foo: ->
+            foo = ->
               array = [
                 one: 1
                 two: 2,
@@ -24,7 +24,7 @@ vows.describe('no_trailing_commas').addBatch(
 
         'should warn when enabled': ->
             result = coffeelint.lint("""
-            foo: ->
+            foo = ->
               array = [
                 one: 1
                 two: 2,
@@ -35,14 +35,44 @@ vows.describe('no_trailing_commas').addBatch(
             assert.equal(result[0].rule,  'no_trailing_commas')
             assert.equal(result[0].level, 'error')
 
+            result = coffeelint.lint("""
+            foo = ->
+              obj = {
+                one: 1
+                two: 2,
+                three: 3
+              }
+            """, configError)
+            assert.equal(result.length, 1)
+            assert.equal(result[0].rule,  'no_trailing_commas')
+            assert.equal(result[0].level, 'error')
+
         'should not warn for single line comments': ->
             result = coffeelint.lint("""
-            foo: ->
+            foo = ->
               array = [
                 one: 1
                 # two: 2,
                 three: 3
               ]
+            """, configError)
+            assert.isEmpty(result)
+
+        'should not warn for multi line comments': ->
+            result = coffeelint.lint("""
+            foo = ->
+              ###
+              # lol,
+              ###
+            """, configError)
+            assert.isEmpty(result)
+
+        'should not warn for first line of multi line comments': ->
+            result = coffeelint.lint("""
+            foo = ->
+              ### lol,
+              hi
+              ###
             """, configError)
             assert.isEmpty(result)
 

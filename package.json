@@ -1,6 +1,6 @@
 {
   "name": "coffeelint-no-trailing-commas",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Validate no trailing commas",
   "main": "index.js",
   "scripts": {

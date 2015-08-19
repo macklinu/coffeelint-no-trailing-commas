@@ -52,10 +52,11 @@ module.exports = class NoTrailingCommas
                     startCounter++
                 newLine = line.substring(0, startCounter).replace(/\s*$/, '')
 
+        isCallStart = (token for token in lineTokens when token[0] is 'CALL_START').length > 0
         hasComma = regexes.trailingComma.test(newLine)
         [first..., last] = lineTokens
         # Don't throw errors when the contents of multiline strings,
         # regexes and the like end in ","
-        if hasComma and lineApi.lineHasToken() and
+        if hasComma and lineApi.lineHasToken() and not isCallStart and
                 not (last[0] in ['STRING', 'IDENTIFIER', 'STRING_END', 'HERECOMMENT'])
             return true

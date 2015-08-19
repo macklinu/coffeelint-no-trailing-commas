@@ -76,4 +76,14 @@ vows.describe('no_trailing_commas').addBatch(
             """, configError)
             assert.isEmpty(result)
 
+        'should not warn for first argument of a function call': ->
+            result = coffeelint.lint("""
+            foo = (one, two) ->
+              one + two
+
+            foo 6,
+              7
+            """, configError)
+            assert.isEmpty(result)
+
 ).export(module)

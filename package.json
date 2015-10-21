@@ -29,7 +29,7 @@
   "homepage": "https://github.com/jasonku/coffeelint-no-trailing-commas",
   "devDependencies": {
     "coffee-script": "^1.9.3",
-    "coffeelint": "~1",
+    "coffeelint": "^1.13.0",
     "lodash": "^3.10.1",
     "vows": "^0.8.1"
   }
